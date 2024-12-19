@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+body{
+    width: 100vw;
+    min-height: 100vh;
+    background-color: oklch(.96 0 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    gap:2rem;
+}
+
+
+body > div{
+    border-radius: 10px;
+    width: 100px;
+    aspect-ratio: 1;
+    background-color: oklch(0.3 0.6 200);
+    border:3px solid oklch(0.5 1 200);
+}
+
+.circle {
+    border-radius: 50%;
+}
+
+/*============= has 选择器使用 ==============*/
+
+div:has(~ .circle){
+    scale: 1.24;
+    background-color: revert;
+    transform: rotateZ(45deg);
+}
+
+

@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --li-scale:1.25;
+    --li-scale-obj:0.2;
+}
+
+
+
+
+body{
+    width: 100vw;
+    min-height: 100vh;
+    background-color: oklch(0.6 0.1 300);
+    color: white;
+    display: grid;
+    place-content: center;
+    padding: 1rem;
+}
+
+
+ul{
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3,100px);
+    grid-auto-rows: auto;
+    list-style: none outside none;
+
+}
+
+li {
+    cursor: pointer;
+}
+
+li img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+li:hover{
+    scale: var(--li-scale);
+}
+
+
+
+/*========== has 选择器 使用  ===========*/
+
+
+
+ul:has(> li:hover) li:not(:hover, :has(+ li:hover), li:hover + li){
+    opacity: 0.5;
+    scale: calc(1 - var(--li-scale-obj));
+    filter: blur(0.05rem);
+}
+
+li:has(+ li:hover),
+li:hover + li{
+    scale:calc(var(--li-scale) - var(--li-scale-obj));
+    opacity: 0.5;
+    filter: blur(.01rem);
+}
